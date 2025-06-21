@@ -39,3 +39,51 @@ def reverse(s):
     return ''.join(result)
 
 print(reverse('a-bC-dEf-ghIj'))
+
+
+
+
+
+
+
+
+
+
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+
+# building the linked list
+node3 = ListNode(3)
+node2 = ListNode(2, node3)
+node1 = ListNode(1, node2)
+
+curr = node1
+while curr:
+    print(curr.val, end = ' -> ')
+    curr = curr.next
+print('None')
+
+def reverseList (head: ListNode) -> ListNode:
+
+    # create the current and previous nodes
+    curr, prev = head, None
+
+    # iterate over the LinkedList
+    while curr:
+        tmp = curr.next # we set a temporary variable equal to the currents' next node
+        curr.next = prev # we reverse the link between the next node and the previous node
+        prev = curr # we set the previous node to the current node
+        curr = tmp # we set the current node to the temporary variable stored earlier
+    return prev # after iterating, the previous node becomes the head (eg head = 1, 2 , 3 -> Null is now head = 3, 2, 1 -> Null)
+
+reverseHead = reverseList(node1)
+
+
+curr = reverseHead
+while curr:
+    print(curr.val, end=" → ")
+    curr = curr.next
+print("None")
