@@ -87,3 +87,61 @@ while curr:
     print(curr.val, end=" → ")
     curr = curr.next
 print("None")
+
+
+# HACKERANK!!!
+from collections import Counter
+
+# Problem 1: return a dict with char freq based on str
+
+# def char_count (str):
+#     # create map
+#     freq = {}
+
+#     # remove whitespace and make it case-insensitive
+#     str = str.lower().replace(" ", "")
+
+#     # iterate over str, mapping each freq value to char key
+#     for char in str:
+#         freq[char] = freq.get(char, 0) + 1 # if we dont see the char, set it to zero then increment the value
+    
+#     # finally, return the freq
+#     return freq
+
+# second way to do it
+
+def char_counter2 (str):
+    freq = {}
+    strc = Counter(str.lower().replace(" ", ""))
+    return strc
+
+# lets say we wanted to preserve the order, just do it manually bro
+
+# def preserve_order (str):
+#     freq = {}
+#     str = str.lower().replace(" ", "")
+#     for char in str:
+#         if char not in freq:
+#             freq[char] = 1
+#         else:
+#             freq[char] += 1
+#     return freq
+
+print(char_counter2('hello world'))
+    
+
+def ransom_note(message, magazine):
+    # # Write your code here
+    # messagec = Counter(message)
+    # magazinec = Counter(magazine)
+    
+    # for char in messagec:
+    #     if messagec[char] > magazinec.get(char, 0):
+    #         return False
+    
+    for char in set(message):
+        if message.count(char) != magazine.count(char):
+            return False
+    return True
+
+print(ransom_note('car','arc'))
